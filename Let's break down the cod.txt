@@ -1,0 +1,30 @@
+Of course! Let's break down the code step by step, explaining each part to beginners:
+
+1. **Expansion Permutation Table** (`expansion_permutation`):
+    - This table defines how the 32-bit right half of the input block is expanded to 48 bits. It specifies the mapping of each bit position from the input to the output.
+
+2. **S-boxes** (`s_boxes`):
+    - DES uses a set of eight substitution boxes (S-boxes) to perform non-linear substitutions during encryption. Each S-box takes a 6-bit input and produces a 4-bit output.
+
+3. **P-box Transposition Table** (`p_box_transposition`):
+    - After substitution with S-boxes, a fixed permutation is applied to rearrange the bits. This table defines the permutation.
+
+4. **`generate_round_key()`**:
+    - This function generates a random 48-bit round key. In DES, each round requires a unique key, derived from the original key.
+
+5. **`expand_to_48_bits(right_half)`**:
+    - This function expands the 32-bit right half of the input block to 48 bits using the expansion permutation table.
+
+6. **`substitute_with_s_boxes(expanded_half_block)`**:
+    - This function performs the S-box substitution. It divides the 48-bit block into 8 segments of 6 bits each, then substitutes each segment using the corresponding S-box.
+
+7. **`transposition_p_box(output)`**:
+    - After S-box substitution, a fixed permutation is applied to the output bits using the P-box transposition table.
+
+8. **`single_round_des(right_half, round_key)`**:
+    - This function encapsulates the entire DES round. It takes the 32-bit right half of the input block and the round key as input, and it returns the result after one round of DES encryption.
+
+9. **Example usage**:
+    - It generates a random 32-bit right half of the input block and a random 48-bit round key. Then, it performs one round of DES encryption using the functions defined earlier and prints the result.
+
+This code demonstrates a simplified version of the DES algorithm for educational purposes. It breaks down the encryption process into individual steps, making it easier to understand how DES works.
